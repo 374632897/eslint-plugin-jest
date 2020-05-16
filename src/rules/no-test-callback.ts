@@ -34,6 +34,10 @@ export default createRule({
 
         const [argument] = callback.params;
 
+        if (argument.type !== AST_NODE_TYPES.Identifier) {
+          return;
+        }
+
         if (callback.async) {
           context.report({
             node: argument,
