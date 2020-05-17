@@ -41,7 +41,8 @@ jobs:
       - name: run typecheck
         run: yarn typecheck
       - name: run tests
-        run: yarn test --coverage
+        # only collect coverage on eslint versions that support the suggestions api
+        run: yarn test --coverage ${{ matrix.eslint-version >= 6 }}
         env:
           CI: true
       - uses: codecov/codecov-action@v1
